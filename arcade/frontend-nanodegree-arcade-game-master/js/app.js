@@ -55,9 +55,9 @@ player.prototype.update = function (dt) {
 	
 }
 
-player.prototype.render = function () {
+player.prototype.render = function() {
 	ctx.drawImage(Resources.get(this.player), this.x, this.y);
-}
+};
 // This class requires an update(), render() and
 
 // a handleInput() method.
