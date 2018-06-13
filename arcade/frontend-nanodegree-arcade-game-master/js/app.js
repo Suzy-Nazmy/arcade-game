@@ -2,7 +2,7 @@
 var Enemy = function(x, y, speed) {
 	this.x = x;
 	this.y = y;
-	this.speed = speedd;
+	this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
     
     // Variables applied to each of our instances go here,
