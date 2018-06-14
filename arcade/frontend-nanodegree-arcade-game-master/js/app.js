@@ -62,7 +62,7 @@ player.prototype.render = function() {
 
 // a handleInput() method.
  
-player.prototype.handleInput = function (keypress) {
+player.prototype.handleInput = function (keyPress) {
     
 	if (keyPress == 'left' && this.x > 0) {
 		this.x -= 102;
