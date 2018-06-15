@@ -1,4 +1,3 @@
-// Enemies our player must avoid
 var Enemy = function(x, y, speed) {
 	this.x = x;
 	this.y = y;
@@ -21,7 +20,8 @@ Enemy.prototype.update = function(dt) {
 	
 	if(this.x > 510) {	
 		this.x = -50;
-	    this.speed = 100 +Math.floor(Math.random() * 222);
+	    this.speed = 100 + Math.floor(Math.random() * 222);
+	}
 	
 	if (player.x < this.x + 80 &&
 	   player.x + 80 > this.x &&
@@ -36,7 +36,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-};
+
 
 // Draw the enemy on the screen, required method for game
 
@@ -71,10 +71,10 @@ player.prototype.handleInput = function (keyPress) {
 		this.x += 102;
 	}
 	if (keyPress == 'up' && this.y > 0) {
-		this.x -= 83;
+		this.y -= 83;
 	}
 	if (keyPress == 'down' && this.y < 405) {
-		this.x += 83;
+		this.y += 83;
 	}
 	if (this.y < 0) {
 		setTimeout(function () {
