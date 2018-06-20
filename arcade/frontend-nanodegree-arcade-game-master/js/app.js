@@ -1,8 +1,12 @@
+
+
+// Enemies our player must avoid
 var Enemy = function(x, y, speed) {
 	this.x = x;
 	this.y = y;
 	this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
+	
     
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -44,25 +48,25 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-var player = function(x, y) {
+var Player = function(x, y) {
 	this.x = x;
 	this.y = y;
-	this.player = 'images/char-pink-girl.png'
+	this.Player = 'images/char-cat-girl.png'
 }
 // Now write your own player class
 
-player.prototype.update = function (dt) {
+Player.prototype.update = function (dt) {
 	
 }
 
-player.prototype.render = function() {
-	ctx.drawImage(Resources.get(this.player), this.x, this.y);
+Player.prototype.render = function() {
+	ctx.drawImage(Resources.get(this.Player), this.x, this.y);
 };
 // This class requires an update(), render() and
 
 // a handleInput() method.
  
-player.prototype.handleInput = function (keyPress) {
+Player.prototype.handleInput = function (keyPress) {
     
 	if (keyPress == 'left' && this.x > 0) {
 		this.x -= 102;
@@ -87,17 +91,31 @@ player.prototype.handleInput = function (keyPress) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var allEnemies = [];
-var enemyLocation = [63, 147, 230];
 
-enemyLocation.forEach(function (locationY) {
+//var allEnemies = [];
+var enemyLocation;
+var enemy1 = new Enemy(10, 60);
+var enemy2 = new Enemy(-190, 140);
+var enemy3 = new Enemy(-290, 230);
+var enemy4 = new Enemy(-390, 140);
+var enemy5 = new Enemy(-490, 60);
+var enemy6 = new Enemy(-890, 230);
+
+// Place all enemy objects in an array called allEnemies
+var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
+// Place the player object in a variable called player
+var player = new Player();
+
+/*enemyLocation.forEach(function (locationY) {
 	enemy = new Enemy(0, locationY, 200);
 	allEnemies.push(enemy);
 });
+*/
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-var player = new player(202, 405);
+var player = new Player(202, 405);
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
@@ -107,5 +125,6 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
-});
+ });
+
  
