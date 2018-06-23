@@ -1,12 +1,13 @@
 
 
+
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
 	this.x = x;
 	this.y = y;
 	this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
-	
     
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -22,32 +23,29 @@ var Enemy = function(x, y, speed) {
 Enemy.prototype.update = function(dt) {
 	this.x += this.speed * dt;
 	
+	// Enemies reappear randomly with different speeds
 	if(this.x > 510) {	
 		this.x = -50;
 	    this.speed = 100 + Math.floor(Math.random() * 222);
 	}
 	
+	//Collisions between the player and the enemies
 	if (player.x < this.x + 80 &&
 	   player.x + 80 > this.x &&
 	   player.y < this.y + 60 &&
 	   player.y + 60 > this.y) {
-	   player.x = 202;
-	   player.y = 405;
+	   player.x = 200;
+	   player.y = 400;
     }
 	
  }
-		
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-
-
-// Draw the enemy on the screen, required method for game
+// Render the enemy 
 
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+// Player on x and y axis
 var Player = function(x, y) {
 	this.x = x;
 	this.y = y;
@@ -59,12 +57,12 @@ Player.prototype.update = function (dt) {
 	
 }
 
+// Renders the image
 Player.prototype.render = function() {
 	ctx.drawImage(Resources.get(this.Player), this.x, this.y);
 };
-// This class requires an update(), render() and
 
-// a handleInput() method.
+//using the arrow keys to jump from tile to tile// a handleInput() method.
  
 Player.prototype.handleInput = function (keyPress) {
     
@@ -80,42 +78,28 @@ Player.prototype.handleInput = function (keyPress) {
 	if (keyPress == 'down' && this.y < 405) {
 		this.y += 83;
 	}
+	//Reset to the starting position
 	if (this.y < 0) {
 		setTimeout(function () {
 			player.x = 202;
 			player.y = 405;
-		}, 600);
+		}, 500);
 	}
 }
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
 
+// Place all enemy objects in an array
+var allEnemies = [];
+var enemyLocation = [63, 147, 230, 300];
 
-//var allEnemies = [];
-var enemyLocation;
-var enemy1 = new Enemy(10, 60);
-var enemy2 = new Enemy(-190, 140);
-var enemy3 = new Enemy(-290, 230);
-var enemy4 = new Enemy(-390, 140);
-var enemy5 = new Enemy(-490, 60);
-var enemy6 = new Enemy(-890, 230);
-
-// Place all enemy objects in an array called allEnemies
-var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
-// Place the player object in a variable called player
-var player = new Player();
-
-/*enemyLocation.forEach(function (locationY) {
+enemyLocation.forEach(function (locationY) {
 	enemy = new Enemy(0, locationY, 200);
 	allEnemies.push(enemy);
 });
-*/
 
-
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// The location of the player on x and y axise 
 var player = new Player(202, 405);
+
+//Listens for key presses
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
