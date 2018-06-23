@@ -2,6 +2,8 @@
 
 
 
+
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
 	this.x = x;
@@ -26,7 +28,7 @@ Enemy.prototype.update = function(dt) {
 	// Enemies reappear randomly with different speeds
 	if(this.x > 510) {	
 		this.x = -50;
-	    this.speed = 100 + Math.floor(Math.random() * 222);
+	    this.speed = 300 + Math.floor(Math.random() * 200);
 	}
 	
 	//Collisions between the player and the enemies
@@ -62,7 +64,7 @@ Player.prototype.render = function() {
 	ctx.drawImage(Resources.get(this.Player), this.x, this.y);
 };
 
-//using the arrow keys to jump from tile to tile// a handleInput() method.
+//using the arrow keys to jump from tile to tile
  
 Player.prototype.handleInput = function (keyPress) {
     
@@ -110,5 +112,6 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
  });
+
 
  
