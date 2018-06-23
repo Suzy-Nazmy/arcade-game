@@ -5,7 +5,9 @@
 Start by clicking on this link https://github.com/Suzy-Nazmy/arcade-game
 
 1- Then download the Zip repo 
-2- Transfer it to unzipped file 
+
+2- Transfer it to unzipped file
+
 3- Double click on the index.html to open it in your browser.
 
 ## How to Play the classic arcade game:
